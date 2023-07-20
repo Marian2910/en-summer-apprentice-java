@@ -1,4 +1,4 @@
-package com.Endava.EventTix.Orders;
+package com.Endava.EventTix.Model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

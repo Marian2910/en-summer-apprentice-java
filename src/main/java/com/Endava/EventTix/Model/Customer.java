@@ -1,11 +1,26 @@
-package com.Endava.EventTix.Customer;
+package com.Endava.EventTix.Model;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table
 public class Customer {
-    int customerID;
+    @Id
+    @SequenceGenerator(
+            name = "customer_sequence",
+            sequenceName = "customer_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+                    strategy = GenerationType.SEQUENCE,
+                    generator = "customer_sequence"
+            )
+    Integer customerID;
     String customerName;
     String email;
 
-    public Customer(int customerID, String customerName, String email) {
+    public Customer(Integer customerID, String customerName, String email) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.email = email;
@@ -16,11 +31,15 @@ public class Customer {
         this.email = email;
     }
 
-    public int getCustomerID() {
+    public Customer() {
+
+    }
+
+    public Integer getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(Integer customerID) {
         this.customerID = customerID;
     }
 

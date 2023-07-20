@@ -1,4 +1,5 @@
-package com.Endava.EventTix.Event;
+package com.Endava.EventTix.Model;
+
 
 import java.time.LocalDateTime;
 
