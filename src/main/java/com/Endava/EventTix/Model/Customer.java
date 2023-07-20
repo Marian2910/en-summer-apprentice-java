@@ -4,18 +4,10 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table
+@Table(name = "Customer")
 public class Customer {
     @Id
-    @SequenceGenerator(
-            name = "customer_sequence",
-            sequenceName = "customer_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-                    strategy = GenerationType.SEQUENCE,
-                    generator = "customer_sequence"
-            )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer customerID;
     String customerName;
     String email;

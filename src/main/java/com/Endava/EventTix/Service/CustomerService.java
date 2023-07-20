@@ -7,15 +7,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class   CustomerService {
+public class CustomerService {
     private final CustomerRepository customerRepository;
-
     @Autowired
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
     public List<Customer> getCustomers() {
-        return customerRepository.findAll();
+        return (List<Customer>) customerRepository.findAll();
     }
 }
