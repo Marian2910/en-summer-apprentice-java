@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface EventRepository  extends CrudRepository<Event, Integer> {
-//    List<Event> findByVenueIDAndType(Venue venueID, EventType type);
+    List<Event> findEventByVenueID_VenueIDAndEventTypeID_EventTypeName(Integer venueId, String eventType);
 }
