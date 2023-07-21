@@ -1,27 +1,29 @@
-//package com.Endava.EventTix.Controller;
-//
-//import com.Endava.EventTix.Model.Orders;
-//import org.springframework.web.bind.annotation.RequestBody;
-//
-//import java.util.HashMap;
-//
-//public class OrdersController {
-//    // Inject the OrderService
-//    private final OrdersService ordersService;
-//
-//    @Autowired
-//    public OrderController(OrdersService ordersService) {
-//        this.ordersService = ordersService;
-//    }
-//
-//    @GetMapping
-//    public List<Orders> getOrders() {
-//        // For simplicity, hardcode the customerId here
-//        int customerId = 123; // Hardcoded customerId (as mentioned in the text)
-//
-//        return ordersService.getOrdersByCustomerId(customerId);
-//    }
-//
+package com.Endava.EventTix.Controller;
+
+import com.Endava.EventTix.Model.Orders;
+import com.Endava.EventTix.Service.OrdersService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "/orders")
+public class OrdersController {
+    private final OrdersService ordersService;
+
+    @Autowired
+    public OrdersController(OrdersService ordersService) {
+        this.ordersService = ordersService;
+    }
+
+    @GetMapping
+    public List<Orders> getOrders() {
+        return ordersService.getOrders();
+    }
+
 //    @PostMapping
 //    public ResponseEntity<Map<String, Orders>> createOrder(@RequestBody OrdersRequest ordersRequest) {
 //        // For simplicity, hardcode the customerId here
@@ -35,4 +37,4 @@
 //
 //        return ResponseEntity.ok(response);
 //    }
-//}
+}

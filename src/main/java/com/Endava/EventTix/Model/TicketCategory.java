@@ -1,59 +1,30 @@
 package com.Endava.EventTix.Model;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "TicketCategory")
 public class TicketCategory {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer ticketCategoryId;
-    Integer eventID;
+    @ManyToOne
+    @JoinColumn(name = "eventID")
+    Event eventID;
+    @Column(name = "description")
     String description;
+    @Column(name = "price")
     BigDecimal price;
 
-    public TicketCategory(Integer ticketCategoryId, Integer eventID, String description, BigDecimal price) {
-        this.ticketCategoryId = ticketCategoryId;
-        this.eventID = eventID;
-        this.description = description;
-        this.price = price;
-    }
 
-    public Integer getTicketCategoryId() {
-        return ticketCategoryId;
-    }
-
-    public void setTicketCategoryId(Integer ticketCategoryId) {
-        this.ticketCategoryId = ticketCategoryId;
-    }
-
-    public Integer getEventID() {
-        return eventID;
-    }
-
-    public void setEventID(Integer eventID) {
-        this.eventID = eventID;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "TicketCategory{" +
-                "ticketCategoryId=" + ticketCategoryId +
-                ", eventID=" + eventID +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
