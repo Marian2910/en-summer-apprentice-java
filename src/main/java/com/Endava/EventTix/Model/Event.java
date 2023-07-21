@@ -1,114 +1,41 @@
-//package com.Endava.EventTix.Model;
-//
-//
-//import jakarta.persistence.*;
-//
-//import java.time.LocalDateTime;
-//
-//@Entity
-//@Table(name = "Event")
-//public class Event {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    int eventID;
-//
-//    @Column(name = "venueID")
-//    int venueID;
-//
-//    @Column(name = "eventTypeID") // Assuming "eventTypeID" is stored as an integer in the "Event" table
-//    int eventTypeID;
-//
-//    String eventDescription;
-//    String eventName;
-//    LocalDateTime startDate;
-//    LocalDateTime endDate;
-//
-//    public Event() {
-//    }
-//
-//    public Event(int eventID,
-//                 int venueID,
-//                 int eventTypeID,
-//                 String eventDescription,
-//                 String eventName,
-//                 LocalDateTime startDate,
-//                 LocalDateTime endDate) {
-//        this.eventID = eventID;
-//        this.venueID = venueID;
-//        this.eventTypeID = eventTypeID;
-//        this.eventDescription = eventDescription;
-//        this.eventName = eventName;
-//        this.startDate = startDate;
-//        this.endDate = endDate;
-//    }
-//
-//    public int getEventID() {
-//        return eventID;
-//    }
-//
-//    public void setEventID(int eventID) {
-//        this.eventID = eventID;
-//    }
-//
-//    public int getVenueID() {
-//        return venueID;
-//    }
-//
-//    public void setVenueID(int venueID) {
-//        this.venueID = venueID;
-//    }
-//
-//    public int getEventTypeID() {
-//        return eventTypeID;
-//    }
-//
-//    public void setEventTypeID(int eventTypeID) {
-//        this.eventTypeID = eventTypeID;
-//    }
-//
-//    public String getEventDescription() {
-//        return eventDescription;
-//    }
-//
-//    public void setEventDescription(String eventDescription) {
-//        this.eventDescription = eventDescription;
-//    }
-//
-//    public String getEventName() {
-//        return eventName;
-//    }
-//
-//    public void setEventName(String eventName) {
-//        this.eventName = eventName;
-//    }
-//
-//    public LocalDateTime getStartDate() {
-//        return startDate;
-//    }
-//
-//    public void setStartDate(LocalDateTime startDate) {
-//        this.startDate = startDate;
-//    }
-//
-//    public LocalDateTime getEndDate() {
-//        return endDate;
-//    }
-//
-//    public void setEndDate(LocalDateTime endDate) {
-//        this.endDate = endDate;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Domain{" +
-//                "eventID=" + eventID +
-//                ", venueID=" + venueID +
-//                ", eventTypeID=" + eventTypeID +
-//                ", eventDescription='" + eventDescription + '\'' +
-//                ", eventName='" + eventName + '\'' +
-//                ", startDate=" + startDate +
-//                ", endDate=" + endDate +
-//                '}';
-//    }
-//}
-//
+package com.Endava.EventTix.Model;
+
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Event")
+public class Event {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int eventID;
+
+    @OneToMany
+    @JoinColumn(name="venueID")
+    List<Venue> venueID;
+
+    @OneToOne
+    @JoinColumn(name = "eventTypeID")
+    EventType eventTypeID;
+
+    @Column(name = "eventDescription")
+    String eventDescription;
+    @Column(name = "eventName")
+    String eventName;
+    @Column(name = "startDate")
+    LocalDateTime startDate;
+    @Column(name = "endDate")
+    LocalDateTime endDate;
+}
+
