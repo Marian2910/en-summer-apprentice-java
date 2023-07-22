@@ -1,12 +1,11 @@
 package com.Endava.EventTix.Controller;
-
 import com.Endava.EventTix.Model.Orders;
+import com.Endava.EventTix.Model.DTOs.OrdersDTO;
 import com.Endava.EventTix.Service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,21 +19,24 @@ public class OrdersController {
     }
 
     @GetMapping
-    public List<Orders> getOrders() {
-        return ordersService.getOrders();
+    public List<OrdersDTO> getEventsByVenueIdAndEventType() {
+        int customerID = 4;
+        List<Orders> orders = ordersService.getOrdersByCustomerId(customerID);
+
+        List<OrdersDTO> ordersDTOList = new ArrayList<>();
+
+        for (Orders order : orders) {
+            OrdersDTO ordersDTO = new OrdersDTO();
+            ordersDTO.setOrderID(order.getOrderID());
+            ordersDTO.setTicketCategoryId(order.getTicketCategoryID().getTicketCategoryId());
+            ordersDTO.setOrderedAt(order.getOrderedAt());
+            ordersDTO.setNumberOfTickets(order.getNumberOfTickets());
+            ordersDTO.setTotalPrice(order.getTotalPrice());
+
+            ordersDTOList.add(ordersDTO);
+        }
+
+        return ordersDTOList;
     }
 
-//    @PostMapping
-//    public ResponseEntity<Map<String, Orders>> createOrder(@RequestBody OrdersRequest ordersRequest) {
-//        // For simplicity, hardcode the customerId here
-//        int customerId = 123; // Hardcoded customerId (as mentioned in the text)
-//
-//        Orders orders = orderService.createOrder(customerId, orderRequest.getEventId(),
-//                orderRequest.getTicketCategoryId(), orderRequest.getNumberOfTickets());
-//
-//        Map<String, Orders> response = new HashMap<>();
-//        response.put("order", order);
-//
-//        return ResponseEntity.ok(response);
-//    }
 }

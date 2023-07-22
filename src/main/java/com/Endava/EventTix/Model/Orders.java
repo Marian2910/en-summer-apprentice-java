@@ -1,5 +1,6 @@
 package com.Endava.EventTix.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,12 +20,14 @@ import java.time.LocalDateTime;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int orderID;
+    Integer orderID;
     @ManyToOne
-    @JoinColumn(name="customerID")
+    @JoinColumn(name = "customerID")
+    @JsonIgnore
     Customer customerID;
-    @OneToOne
-    @JoinColumn(name="ticketCategoryID")
+
+    @ManyToOne
+    @JoinColumn(name = "ticketCategoryID")
     TicketCategory ticketCategoryID;
 
     @Column(name = "orderedAt")

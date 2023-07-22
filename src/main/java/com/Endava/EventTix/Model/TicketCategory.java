@@ -26,5 +26,4 @@ public class TicketCategory {
     @Column(name = "price")
     BigDecimal price;
 
-
 }
