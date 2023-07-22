@@ -1,6 +1,5 @@
 package com.Endava.EventTix.Model.DTOs;
 
-import com.Endava.EventTix.Model.EventType;
 import com.Endava.EventTix.Model.Venue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +16,7 @@ import java.util.List;
 public class EventDTO {
     private int eventID;
     private Venue venueID;
-    private EventType eventTypeID;
+    private String eventType;
 
     private String eventDescription;
     private String eventName;

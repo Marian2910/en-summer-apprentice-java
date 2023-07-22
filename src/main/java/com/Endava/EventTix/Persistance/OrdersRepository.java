@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface OrdersRepository extends CrudRepository<Orders, Integer> {
     List<Orders> findOrdersByCustomerID_CustomerID(Integer customerID);
-
 }

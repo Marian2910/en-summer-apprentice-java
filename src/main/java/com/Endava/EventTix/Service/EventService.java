@@ -1,11 +1,15 @@
 package com.Endava.EventTix.Service;
 
+import com.Endava.EventTix.Model.DTOs.EventDTO;
+import com.Endava.EventTix.Model.DTOs.TicketCategoryDTO;
 import com.Endava.EventTix.Model.Event;
 import com.Endava.EventTix.Persistance.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -15,7 +19,37 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public List<Event> getEventByVenueAndEventType(Integer venueID, String eventType){
-        return eventRepository.findEventsByVenueID_VenueIDAndEventTypeID_EventTypeName(venueID, eventType);
+    public List<EventDTO> getEventByVenueAndEventType(Integer venueID, String eventType){
+        List<Event> events = eventRepository.findEventsByVenueID_VenueIDAndEventTypeID_EventTypeName(venueID, eventType);
+
+        List<EventDTO> eventDTOList = new ArrayList<>();
+
+        for (Event event : events) {
+            EventDTO eventDTO = new EventDTO();
+            eventDTO.setEventID(event.getEventID());
+            eventDTO.setVenueID(event.getVenueID());
+            eventDTO.setEventName(event.getEventName());
+            eventDTO.setEventDescription(event.getEventDescription());
+            eventDTO.setStartDate(event.getStartDate());
+            eventDTO.setEndDate(event.getEndDate());
+            eventDTO.setVenueID(event.getVenueID());
+            eventDTO.setEventType(event.getEventTypeID().getEventTypeName());
+
+            List<TicketCategoryDTO> ticketCategoryDTOList = event.getTicketCategories().stream()
+                    .map(ticketCategory -> {
+                        TicketCategoryDTO ticketCategoryDTO = new TicketCategoryDTO();
+                        ticketCategoryDTO.setTicketCategoryId(ticketCategory.getTicketCategoryId());
+                        ticketCategoryDTO.setDescription(ticketCategory.getDescription());
+                        ticketCategoryDTO.setPrice(ticketCategory.getPrice());
+                        return ticketCategoryDTO;
+                    })
+                    .collect(Collectors.toList());
+
+            eventDTO.setTicketCategories(ticketCategoryDTOList);
+
+            eventDTOList.add(eventDTO);
+        }
+
+        return eventDTOList;
     }
 }
