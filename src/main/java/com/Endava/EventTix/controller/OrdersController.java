@@ -1,7 +1,7 @@
-package com.Endava.EventTix.Controller;
-import com.Endava.EventTix.Model.DTOs.OrdersDTOInput;
-import com.Endava.EventTix.Model.DTOs.OrdersDTO;
-import com.Endava.EventTix.Service.OrdersService;
+package com.Endava.EventTix.controller;
+import com.Endava.EventTix.dto.OrdersDTOInput;
+import com.Endava.EventTix.dto.OrdersDTO;
+import com.Endava.EventTix.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

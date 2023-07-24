@@ -1,6 +1,6 @@
-package com.Endava.EventTix.Model.DTOs;
+package com.Endava.EventTix.dto;
 
-import com.Endava.EventTix.Model.Venue;
+import com.Endava.EventTix.model.Venue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

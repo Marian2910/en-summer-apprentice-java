@@ -1,9 +1,11 @@
-package com.Endava.EventTix.Service;
-import com.Endava.EventTix.Model.DTOs.*;
-import com.Endava.EventTix.Persistance.CustomerRepository;
-import com.Endava.EventTix.Persistance.OrdersRepository;
-import com.Endava.EventTix.Model.Orders;
-import com.Endava.EventTix.Persistance.TicketCategoryRepository;
+package com.Endava.EventTix.service;
+import com.Endava.EventTix.dto.OrdersDTO;
+import com.Endava.EventTix.dto.OrdersDTOInput;
+import com.Endava.EventTix.dto.*;
+import com.Endava.EventTix.persistance.CustomerRepository;
+import com.Endava.EventTix.persistance.OrdersRepository;
+import com.Endava.EventTix.model.Orders;
+import com.Endava.EventTix.persistance.TicketCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,10 +48,10 @@ public class OrdersService {
 
     public OrdersDTO createOrder(OrdersDTOInput orderDTOInput) {
         Orders order = new Orders();
-
+        int customerID = 3;
         order.setTicketCategoryID(ticketCategoryRepository.findTicketCategoryByTicketCategoryId(orderDTOInput.getTicketCategoryId()));
         order.setNumberOfTickets(orderDTOInput.getNumberOfTickets());
-        order.setCustomerID(customerRepository.getCustomerByCustomerID(3));
+        order.setCustomerID(customerRepository.getCustomerByCustomerID(customerID));
         order.setOrderedAt(LocalDateTime.now());
         order.setTotalPrice((BigDecimal) multiply(new BigDecimal(orderDTOInput.getNumberOfTickets()), ticketCategoryRepository.findTicketCategoryByTicketCategoryId(orderDTOInput.getTicketCategoryId()).getPrice()));
         Orders newOrder = ordersRepository.save(order);

@@ -1,4 +1,4 @@
-package com.Endava.EventTix.Model.DTOs;
+package com.Endava.EventTix.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

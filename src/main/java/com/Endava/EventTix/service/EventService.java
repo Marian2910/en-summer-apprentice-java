@@ -1,9 +1,9 @@
-package com.Endava.EventTix.Service;
+package com.Endava.EventTix.service;
 
-import com.Endava.EventTix.Model.DTOs.EventDTO;
-import com.Endava.EventTix.Model.DTOs.TicketCategoryDTO;
-import com.Endava.EventTix.Model.Event;
-import com.Endava.EventTix.Persistance.EventRepository;
+import com.Endava.EventTix.dto.EventDTO;
+import com.Endava.EventTix.dto.TicketCategoryDTO;
+import com.Endava.EventTix.model.Event;
+import com.Endava.EventTix.persistance.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

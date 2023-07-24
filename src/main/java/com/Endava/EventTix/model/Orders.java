@@ -1,4 +1,4 @@
-package com.Endava.EventTix.Model;
+package com.Endava.EventTix.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;

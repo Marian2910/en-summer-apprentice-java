@@ -1,7 +1,7 @@
-package com.Endava.EventTix.Controller;
+package com.Endava.EventTix.controller;
 
-import com.Endava.EventTix.Model.DTOs.EventDTO;
-import com.Endava.EventTix.Service.EventService;
+import com.Endava.EventTix.dto.EventDTO;
+import com.Endava.EventTix.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

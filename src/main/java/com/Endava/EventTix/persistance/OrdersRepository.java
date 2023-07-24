@@ -1,6 +1,6 @@
-package com.Endava.EventTix.Persistance;
+package com.Endava.EventTix.persistance;
 
-import com.Endava.EventTix.Model.Orders;
+import com.Endava.EventTix.model.Orders;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
