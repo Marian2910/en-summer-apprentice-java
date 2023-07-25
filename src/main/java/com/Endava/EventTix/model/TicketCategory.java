@@ -1,4 +1,4 @@
-package com.Endava.EventTix.Model;
+package com.Endava.EventTix.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,5 @@ public class TicketCategory {
     String description;
     @Column(name = "price")
     BigDecimal price;
-
 
 }

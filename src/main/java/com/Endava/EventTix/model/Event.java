@@ -1,4 +1,4 @@
-package com.Endava.EventTix.Model;
+package com.Endava.EventTix.model;
 
 
 import jakarta.persistence.*;
@@ -21,11 +21,11 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int eventID;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="venueID")
-    List<Venue> venueID;
+    Venue venueID;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "eventTypeID")
     EventType eventTypeID;
 
@@ -37,5 +37,7 @@ public class Event {
     LocalDateTime startDate;
     @Column(name = "endDate")
     LocalDateTime endDate;
-}
 
+    @OneToMany(mappedBy = "eventID", fetch = FetchType.LAZY)
+    List<TicketCategory> ticketCategories;
+}

@@ -1,4 +1,4 @@
-package com.Endava.EventTix.Model;
+package com.Endava.EventTix.model;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;

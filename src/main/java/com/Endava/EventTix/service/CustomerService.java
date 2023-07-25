@@ -1,6 +1,6 @@
-package com.Endava.EventTix.Service;
-import com.Endava.EventTix.Persistance.CustomerRepository;
-import com.Endava.EventTix.Model.Customer;
+package com.Endava.EventTix.service;
+import com.Endava.EventTix.persistance.CustomerRepository;
+import com.Endava.EventTix.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
